@@ -12,6 +12,7 @@ use Kirki\Controls\SliderControl;
 use Kirki\Controls\SortableControl;
 use Kirki\Controls\SwitchControl;
 use Kirki\Controls\ToggleControl;
+use Kirki\Controls\RepeaterControl;
 
 class Kirki_Control {
 
@@ -163,9 +164,14 @@ class Kirki_Control {
 			$wp_customize->add_control( new CustomControl( $wp_customize, $control['settings'], $control ) );
 		}
 
-		// Custom Control
+		// Editor Control
 		elseif ( 'editor' == $control['type'] ) {
 			$wp_customize->add_control( new EditorControl( $wp_customize, $control['settings'], $control ) );
+		}
+
+		// Repeater Control
+		elseif ( 'repeater' == $control['type'] ) {
+			$wp_customize->add_control( new RepeaterControl( $wp_customize, $control['settings'], $control ) );
 		}
 
 		// Background Controls

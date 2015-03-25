@@ -16,7 +16,7 @@ class Kirki {
     public static $version = '0.7.1';
 
     /** @var Kirki_Config Configuration */
-	public $config = null;
+	  public $config = null;
 
     /** @var Kirki_Controls Controls */
     public $controls = null;

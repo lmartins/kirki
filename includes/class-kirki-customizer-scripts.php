@@ -43,6 +43,7 @@ class Kirki_Customizer_Scripts extends Kirki {
 		wp_enqueue_script( 'serialize-js', $kirki_url . 'assets/js/serialize.js');
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-tooltip' );
+		wp_enqueue_script( 'jquery-ui-repeater', $kirki_url . 'assets/js/jquery.repeater.js' );
 
 	}
 

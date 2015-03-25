@@ -16,6 +16,7 @@ class Kirki_Controls {
         'palette'           => 'PaletteControl',
         'custom'            => 'CustomControl',
         'editor'            => 'EditorControl',
+        'repeater'          => 'RepeaterControl',
     );
 
     /** @var array The controls */
