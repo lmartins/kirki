@@ -22,20 +22,14 @@ class Frontend {
 	 * Add a dummy, empty stylesheet if no stylesheet_id has been defined and we need one.
 	 */
 	function frontend_styles() {
-        $config   = Kirki::config();
+
+        $config   = Kirki::config()->get_all();
 		$controls = Kirki::controls()->get_all();
 
-        $kirki_url = $config->get('url_path', KIRKI_URL);
-        $kirki_stylesheet = $config->getOrThrow('stylesheet_id');
+        $kirki_url = ( isset( $config['url_path'] ) ) ? $config['url_path'] : KIRKI_URL;
 
-		foreach( $controls as $control ) {
-			if ( isset( $control['output'] ) ) {
-				$uses_output = true;
-			}
-		}
-
-		if ( isset( $uses_output )  && $uses_output && $kirki_stylesheet === 'kirki-styles' ) {
-			wp_enqueue_style( 'kirki-styles', $kirki_url . 'assets/css/kirki-styles.css', NULL, NULL );
+		if ( ! isset( $config['stylesheet_id'] ) || 'kirki-styles' == $config['stylesheet_id'] ) {
+			wp_enqueue_style( 'kirki-styles', trailingslashit( $kirki_url ) . 'assets/css/kirki-styles.css', NULL, NULL );
 		}
 
 	}

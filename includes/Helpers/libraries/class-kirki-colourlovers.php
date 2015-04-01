@@ -19,8 +19,11 @@ class Kirki_Colourlovers {
 
 	public static function parse( $xml = null ) {
 
+		$config = Kirki::config()->get_all();
+		$kirki_url = isset( $config['url_path'] ) ? $config['url_path'] : KIRKI_URL;
+
 		// XML copied from http://www.colourlovers.com/api/palettes/top?numResults=100
-		$xml_url  = ( is_null( $xml ) ) ? KIRKI_URL . '/assets/xml/colourlovers-top.xml' : $xml;
+		$xml_url  = ( is_null( $xml ) ) ? trailingslashit( $kirki_url ) . '/assets/xml/colourlovers-top.xml' : $xml;
 		$feed_xml = simplexml_load_file( $xml_url );
 		$palettes = array();
 
